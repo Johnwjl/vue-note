@@ -10,7 +10,6 @@ import { use } from 'echarts/core'
 import { BarChart } from 'echarts/charts'
 import { GridComponent, TooltipComponent, TitleComponent } from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
-import { ECOption } from 'vue-echarts'
 
 import VChart from 'vue-echarts'
 
@@ -40,7 +39,7 @@ const chartData = computed(() => {
 })
 
 // ECharts 图表配置项
-const chartOptions = computed<ECOption>(() => {
+const chartOptions = computed(() => {
   // 打印出 chartData 数据
   console.log('chartData:', chartData.value)
 
@@ -60,7 +59,7 @@ const chartOptions = computed<ECOption>(() => {
       axisPointer: {
         type: 'shadow',
       },
-      formatter: (params) => {
+      formatter: (params: { name: string; value: number }[]) => {
         // 打印 params，查看 tooltip 的值
         console.log(params)
         const { name, value } = params[0]

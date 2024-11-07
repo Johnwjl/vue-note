@@ -14,7 +14,7 @@ const onSearch = () => {
 </script>
 
 <style scoped>
-::v-deep .van-search__content {
+:deep(.van-search__content) {
   width: 100%;
   width: -webkit-fill-available;
 }

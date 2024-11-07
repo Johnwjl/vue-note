@@ -33,7 +33,7 @@ interface Note {
   id: number
   title: string
   content: string
-  date: string
+  date?: string
 }
 
 // 使用 VueUse 的 useStorage 实现本地存储，确保 notes 数据可以被持久化

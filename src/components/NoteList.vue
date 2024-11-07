@@ -29,7 +29,7 @@ interface Note {
   id: number
   title: string
   content: string
-  date: string
+  date?: string
 }
 
 defineProps<{
@@ -54,7 +54,7 @@ const onClose = ({ position }: { position: string }, date: string, noteId: numbe
 }
 
 // position 为关闭时点击的位置
-const beforeClose = ({ position }) => {
+const beforeClose = ({ position }: { position: string }): boolean | Promise<boolean> => {
   switch (position) {
     case 'left':
     case 'cell':
@@ -69,6 +69,8 @@ const beforeClose = ({ position }) => {
           .then(() => resolve(true))
           .catch(() => resolve(false))
       })
+    default:
+      return false // 添加默认返回值，确保所有分支都有返回类型
   }
 }
 </script>
